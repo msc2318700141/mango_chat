@@ -12,7 +12,7 @@ var http      	  =require("http"),//内部模块 处理http
 	url           =require("url"),//内部模块 粗粒URL
 	socket        =require("socket.io"),//第三方模块 处理服务器握手websocket协议 
 	jade          =require("jade"),//第三方模块 渲染jade模板引擎
-	PageService=require("./modules/PageService")
+	PageService=require("./modules/PageService"),
 	StaticService =require("./modules/StaticService");//自定义模块
 
 

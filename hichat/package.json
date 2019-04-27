@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "jade": "^1.11.0",
+    "mysql": "^2.17.1",
     "socket.io": "^1.7.4"
   },
   "devDependencies": {

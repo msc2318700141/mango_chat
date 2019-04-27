@@ -26,6 +26,7 @@ HiChat.prototype={
 		var ELE_SHOWMSG   =$("#showmsg");
 		var ELE_EXPRE=$("#expre");
 		var ELE_EXPREBOX=$("#exprebox");
+		var ELE_EDIT=$("#edit");
 		var ELE_SHAKE=$("#shake");
 		var ELE_SENDIMG=$("#img");
 		var that          =this;
@@ -109,11 +110,6 @@ HiChat.prototype={
 
 		})
 
-        this.socket.on("newImg",function(url){
-
-
-        })
-
 		ELE_USERLOGIN.on("click",function(){
 			var nickName=ELE_NICKNAME.val();
 			if(nickName.trim().length!=0){
@@ -127,6 +123,12 @@ HiChat.prototype={
 			}
 		})
 
+		ELE_EDIT.on("click",function(){
+			var a = Math.random()*255;
+			var b = Math.random()*255;
+			var c = Math.random()*255;
+			$(".contentmsg").css('color','rgba('+a+','+b+','+c+')');
+		})
 
 		ELE_SEND.on("click",function(){
 			var msgContent=ELE_MSGBOX.val();

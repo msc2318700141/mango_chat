@@ -12,6 +12,18 @@
  * @param  {[type]} res [请求对象]
  * @param  {[type]} io  [socket.io对象]
  */
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '111111',
+  database : 'chat'
+});
+ 
+connection.connect();
+
+
 exports.renderJade=function(io,users){
 
 	io.on("connection",function(socket){
@@ -42,7 +54,15 @@ exports.renderJade=function(io,users){
 			}
 		})
 		socket.on("send msg",function(message){
-			console.log(message);
+			var sql = 'insert into message_history(`user_name`,`content`) values("'+ socket.nickname + '","' + message + '")'
+			console.log(sql)
+			connection.query(sql, function (error, results, fields) {
+				if(error){
+					console.log('[INSERT ERROR] - ',error1.message);
+					return;
+				  }
+			});
+
 			io.sockets.emit("newMsg",message,socket.nickname,users,socket.userIndex,socket.photoid);
 		})
 
